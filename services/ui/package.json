@@ -1,0 +1,13 @@
+{
+  "name": "kb-ui",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Knowledge Browser UI placeholder",
+  "type": "module",
+  "engines": {
+    "node": ">=20"
+  },
+  "scripts": {
+    "start": "node src/server.js"
+  }
+}

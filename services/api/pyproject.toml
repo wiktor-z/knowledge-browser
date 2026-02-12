@@ -1,0 +1,50 @@
+[build-system]
+requires = ["setuptools>=69", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kb-api"
+version = "0.1.0"
+description = "Knowledge Browser API service"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+  "fastapi>=0.115.0,<1.0.0",
+  "pydantic>=2.10.0,<3.0.0",
+  "pydantic-settings>=2.6.0,<3.0.0",
+  "psycopg[binary]>=3.2.0,<4.0.0",
+  "uvicorn>=0.34.0,<1.0.0",
+  "kb-core>=0.1.0",
+]
+
+[project.optional-dependencies]
+dev = [
+  "mypy>=1.14.0,<2.0.0",
+  "pytest>=8.3.0,<9.0.0",
+  "ruff>=0.9.0,<1.0.0",
+  "httpx>=0.28.0,<1.0.0",
+]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+warn_unused_configs = true
+mypy_path = "src"
+
+[tool.pytest.ini_options]
+addopts = "-ra"
+testpaths = ["tests"]

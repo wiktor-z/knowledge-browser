@@ -1,0 +1,22 @@
+name: ci
+
+on:
+  pull_request:
+
+jobs:
+  quality-gates:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Bootstrap
+        run: make bootstrap
+
+      - name: Run quality gates
+        run: make check
